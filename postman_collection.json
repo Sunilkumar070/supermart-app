@@ -1,0 +1,274 @@
+{
+  "info": {
+    "name": "SuperMart API",
+    "description": "Complete API collection for SuperMart - E-commerce, Quick Commerce, Travel & Fintech",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://your-app.railway.app",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "userId",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Register User",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "url": "{{baseUrl}}/api/auth/register",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"phone\": \"9876543210\",\n  \"password\": \"password123\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "url": "{{baseUrl}}/api/auth/login",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"john@example.com\",\n  \"password\": \"password123\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "Get All Products",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/products"
+          }
+        },
+        {
+          "name": "Get Product by ID",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/products/:id"
+          }
+        },
+        {
+          "name": "Get Categories",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/products/meta/categories"
+          }
+        },
+        {
+          "name": "Search Electronics",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/products?category=electronics&sort=price_low"
+          }
+        },
+        {
+          "name": "Quick Commerce Products",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/products?isQuickCommerce=true"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Cart",
+      "item": [
+        {
+          "name": "Get Cart",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/cart/{{userId}}"
+          }
+        },
+        {
+          "name": "Add to Cart",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "url": "{{baseUrl}}/api/cart/{{userId}}/add",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"productId\": \"PRODUCT_ID\",\n  \"name\": \"iPhone 15 Pro\",\n  \"price\": 129900,\n  \"quantity\": 1,\n  \"image\": \"https://example.com/image.jpg\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Remove from Cart",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/cart/{{userId}}/remove/:productId"
+          }
+        },
+        {
+          "name": "Clear Cart",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/cart/{{userId}}/clear"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Orders",
+      "item": [
+        {
+          "name": "Create Order",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "url": "{{baseUrl}}/api/orders/create",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"{{userId}}\",\n  \"items\": [\n    {\n      \"product\": \"PRODUCT_ID\",\n      \"name\": \"iPhone 15 Pro\",\n      \"price\": 129900,\n      \"quantity\": 1\n    }\n  ],\n  \"totalAmount\": 129900,\n  \"paymentMethod\": \"wallet\",\n  \"deliveryAddress\": {\n    \"street\": \"123 Main St\",\n    \"city\": \"Mumbai\",\n    \"state\": \"Maharashtra\",\n    \"pincode\": \"400001\"\n  },\n  \"isQuickCommerce\": false\n}"
+            }
+          }
+        },
+        {
+          "name": "Get User Orders",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/orders/user/{{userId}}"
+          }
+        },
+        {
+          "name": "Get Order Details",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/orders/:orderId"
+          }
+        },
+        {
+          "name": "Update Order Status",
+          "request": {
+            "method": "PATCH",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "url": "{{baseUrl}}/api/orders/:orderId/status",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"shipped\",\n  \"message\": \"Order shipped via Blue Dart\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Wallet",
+      "item": [
+        {
+          "name": "Get Wallet Balance",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/wallet/{{userId}}"
+          }
+        },
+        {
+          "name": "Add Money",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "url": "{{baseUrl}}/api/wallet/{{userId}}/add",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": 1000,\n  \"description\": \"Added via UPI\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Deduct Money",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "url": "{{baseUrl}}/api/wallet/{{userId}}/deduct",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": 500,\n  \"description\": \"Payment for order\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Travel",
+      "item": [
+        {
+          "name": "Search Flights",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/travel/flights/search?from=Mumbai&to=Delhi&date=2024-02-15"
+          }
+        },
+        {
+          "name": "Search Hotels",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/travel/hotels/search?location=Goa&checkIn=2024-02-15&checkOut=2024-02-18"
+          }
+        },
+        {
+          "name": "Book Flight",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "url": "{{baseUrl}}/api/travel/book",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"{{userId}}\",\n  \"bookingType\": \"flight\",\n  \"details\": {\n    \"airline\": \"IndiGo\",\n    \"flightNumber\": \"6E-123\",\n    \"from\": \"Mumbai\",\n    \"to\": \"Delhi\",\n    \"departureDate\": \"2024-02-15T06:00:00Z\",\n    \"class\": \"Economy\",\n    \"passengers\": 2\n  },\n  \"amount\": 9000\n}"
+            }
+          }
+        },
+        {
+          "name": "Get User Bookings",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/travel/bookings/{{userId}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Delivery",
+      "item": [
+        {
+          "name": "Check Availability",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "url": "{{baseUrl}}/api/delivery/check-availability",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pincode\": \"110001\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Track Delivery",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/delivery/track/:orderId"
+          }
+        }
+      ]
+    }
+  ]
+}
