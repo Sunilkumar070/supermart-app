@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperMart - Your All-in-One Super App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-shopping-bag text-3xl"></i>
+                    <h1 class="text-2xl font-bold">SuperMart</h1>
+                </div>
+                <nav class="hidden md:flex space-x-6">
+                    <a href="#" class="hover:text-blue-200">Home</a>
+                    <a href="#" class="hover:text-blue-200">Products</a>
+                    <a href="#" class="hover:text-blue-200">Quick Commerce</a>
+                    <a href="#" class="hover:text-blue-200">Travel</a>
+                    <a href="#" class="hover:text-blue-200">Wallet</a>
+                </nav>
+                <div class="flex items-center space-x-4">
+                    <button class="hover:text-blue-200">
+                        <i class="fas fa-shopping-cart text-xl"></i>
+                        <span class="ml-1 bg-red-500 text-white rounded-full px-2 py-1 text-xs">0</span>
+                    </button>
+                    <button id="loginBtn" class="bg-white text-blue-600 px-4 py-2 rounded-lg font-semibold hover:bg-blue-50">
+                        Login
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-purple-500 to-pink-500 text-white py-20">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-5xl font-bold mb-4">Everything You Need, One App</h2>
+            <p class="text-xl mb-8">E-commerce • Quick Commerce • Travel • Fintech</p>
+            <div class="flex justify-center space-x-4">
+                <button class="bg-white text-purple-600 px-8 py-3 rounded-lg font-bold hover:bg-gray-100">
+                    Shop Now
+                </button>
+                <button class="border-2 border-white px-8 py-3 rounded-lg font-bold hover:bg-white hover:text-purple-600">
+                    Learn More
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <h3 class="text-3xl font-bold text-center mb-12">Our Services</h3>
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-lg text-center hover:shadow-2xl transition">
+                    <i class="fas fa-shopping-cart text-5xl text-blue-600 mb-4"></i>
+                    <h4 class="text-xl font-bold mb-2">E-Commerce</h4>
+                    <p class="text-gray-600">Shop from millions of products</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg text-center hover:shadow-2xl transition">
+                    <i class="fas fa-bolt text-5xl text-yellow-500 mb-4"></i>
+                    <h4 class="text-xl font-bold mb-2">Quick Commerce</h4>
+                    <p class="text-gray-600">10-minute delivery guaranteed</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg text-center hover:shadow-2xl transition">
+                    <i class="fas fa-plane text-5xl text-green-600 mb-4"></i>
+                    <h4 class="text-xl font-bold mb-2">Travel Booking</h4>
+                    <p class="text-gray-600">Flights, hotels & packages</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg text-center hover:shadow-2xl transition">
+                    <i class="fas fa-wallet text-5xl text-purple-600 mb-4"></i>
+                    <h4 class="text-xl font-bold mb-2">Digital Wallet</h4>
+                    <p class="text-gray-600">Secure payments & cashback</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center mb-8">
+                <h3 class="text-3xl font-bold">Featured Products</h3>
+                <div class="flex space-x-2">
+                    <button class="px-4 py-2 bg-blue-600 text-white rounded-lg">All</button>
+                    <button class="px-4 py-2 bg-white rounded-lg hover:bg-gray-200">Electronics</button>
+                    <button class="px-4 py-2 bg-white rounded-lg hover:bg-gray-200">Fashion</button>
+                    <button class="px-4 py-2 bg-white rounded-lg hover:bg-gray-200">Grocery</button>
+                </div>
+            </div>
+            <div id="productsGrid" class="grid md:grid-cols-4 gap-6">
+                <!-- Products will be loaded here -->
+                <div class="text-center py-20 col-span-4">
+                    <i class="fas fa-spinner fa-spin text-4xl text-blue-600"></i>
+                    <p class="mt-4 text-gray-600">Loading products...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Commerce Banner -->
+    <section class="bg-gradient-to-r from-yellow-400 to-orange-500 py-16">
+        <div class="container mx-auto px-4 text-center text-white">
+            <i class="fas fa-bolt text-6xl mb-4"></i>
+            <h3 class="text-4xl font-bold mb-4">Need it NOW?</h3>
+            <p class="text-xl mb-6">Get groceries & essentials delivered in 10 minutes!</p>
+            <button class="bg-white text-orange-600 px-8 py-3 rounded-lg font-bold hover:bg-gray-100">
+                Order Now
+            </button>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <h4 class="text-4xl font-bold text-blue-600">10M+</h4>
+                    <p class="text-gray-600">Products</p>
+                </div>
+                <div>
+                    <h4 class="text-4xl font-bold text-green-600">5M+</h4>
+                    <p class="text-gray-600">Happy Customers</p>
+                </div>
+                <div>
+                    <h4 class="text-4xl font-bold text-purple-600">100+</h4>
+                    <p class="text-gray-600">Cities</p>
+                </div>
+                <div>
+                    <h4 class="text-4xl font-bold text-orange-600">10 Min</h4>
+                    <p class="text-gray-600">Delivery Time</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h5 class="text-xl font-bold mb-4">SuperMart</h5>
+                    <p class="text-gray-400">Your all-in-one super app for shopping, quick delivery, travel & payments.</p>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-4">Quick Links</h5>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">About Us</a></li>
+                        <li><a href="#" class="hover:text-white">Careers</a></li>
+                        <li><a href="#" class="hover:text-white">Press</a></li>
+                        <li><a href="#" class="hover:text-white">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-4">Support</h5>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">Help Center</a></li>
+                        <li><a href="#" class="hover:text-white">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-white">Terms</a></li>
+                        <li><a href="#" class="hover:text-white">Privacy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-4">Download App</h5>
+                    <div class="space-y-2">
+                        <button class="bg-white text-black px-4 py-2 rounded-lg w-full hover:bg-gray-200">
+                            <i class="fab fa-apple mr-2"></i> App Store
+                        </button>
+                        <button class="bg-white text-black px-4 py-2 rounded-lg w-full hover:bg-gray-200">
+                            <i class="fab fa-google-play mr-2"></i> Play Store
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 SuperMart. All rights reserved. Built with ❤️</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // API Configuration
+        const API_URL = 'https://your-app.railway.app'; // Replace with your Railway URL
+        
+        // Load products
+        async function loadProducts() {
+            try {
+                const response = await fetch(`${API_URL}/api/products`);
+                const data = await response.json();
+                
+                const grid = document.getElementById('productsGrid');
+                grid.innerHTML = '';
+                
+                data.products.slice(0, 8).forEach(product => {
+                    const discount = Math.round(((product.mrp - product.price) / product.mrp) * 100);
+                    grid.innerHTML += `
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition">
+                            <div class="h-48 bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center">
+                                <i class="fas fa-box text-6xl text-gray-400"></i>
+                            </div>
+                            <div class="p-4">
+                                <h4 class="font-bold text-lg mb-2">${product.name}</h4>
+                                <p class="text-gray-600 text-sm mb-3 line-clamp-2">${product.description}</p>
+                                <div class="flex items-center justify-between mb-3">
+                                    <div>
+                                        <span class="text-2xl font-bold text-blue-600">₹${product.price.toLocaleString()}</span>
+                                        <span class="text-gray-400 line-through ml-2">₹${product.mrp.toLocaleString()}</span>
+                                    </div>
+                                    <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-sm font-semibold">
+                                        ${discount}% OFF
+                                    </span>
+                                </div>
+                                ${product.isQuickCommerce ? 
+                                    '<div class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs font-semibold mb-2"><i class="fas fa-bolt"></i> 10-min delivery</div>' : 
+                                    '<div class="text-gray-600 text-xs mb-2"><i class="fas fa-truck"></i> ' + product.deliveryTime + '</div>'
+                                }
+                                <button class="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                });
+            } catch (error) {
+                console.error('Error loading products:', error);
+                document.getElementById('productsGrid').innerHTML = `
+                    <div class="col-span-4 text-center py-20">
+                        <i class="fas fa-exclamation-circle text-4xl text-red-600 mb-4"></i>
+                        <p class="text-gray-600">Unable to load products. Please check if the API is running.</p>
+                        <p class="text-sm text-gray-500 mt-2">API URL: ${API_URL}</p>
+                    </div>
+                `;
+            }
+        }
+        
+        // Load products on page load
+        loadProducts();
+        
+        // Login button
+        document.getElementById('loginBtn').addEventListener('click', () => {
+            alert('Login functionality - Connect to your backend API!');
+        });
+    </script>
+</body>
+</html>
